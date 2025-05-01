@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hotels</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    
+      margin: 0;
+      padding: 30px;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 2em;
+      margin-bottom: 30px;
+      color: #222;
+    }
+
+    .hotel-gallery {
+      display: flex;
+      flex-direction: column; /* Vertical layout */
+      align-items: center;
+      gap: 25px;
+    }
+
+    .hotel {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s;
+      width: 300px;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .hotel:hover {
+      transform: translateY(-10px);
+    }
+
+    .hotel img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .hotel p {
+      margin: 0;
+      padding: 10px;
+      font-weight: bold;
+      background: #3a1c71;
+      color: white;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h2>Select a Hotel</h2>
+  <div class="hotel-gallery">
+    <div class="hotel" onclick="showInfo('Hotel A')">
+      <img src="hotel1.jpg" alt="Hotel A"><p>Hotel A</p>
+    </div>
+    <div class="hotel" onclick="showInfo('Hotel B')">
+      <img src="hotel2.jpg" alt="Hotel B"><p>Hotel B</p>
+    </div>
+    <div class="hotel" onclick="showInfo('Hotel C')">
+      <img src="hotel3.jpg" alt="Hotel C"><p>Hotel C</p>
+    </div>
+    <div class="hotel" onclick="showInfo('Hotel D')">
+      <img src="hotel4.jpg" alt="Hotel D"><p>Hotel D</p>
+    </div>
+  </div>
+
+  <script>
+    const hotels = {
+      "Hotel A": {
+        name: "Hotel A",
+        image: "hotel1.jpg",
+        description: "Luxury hotel with sea view and premium services.",
+        rooms: [
+          { type: "Single Room", price: "$100", amenities: "Wi-Fi, AC, TV" },
+          { type: "Double Room", price: "$150", amenities: "Wi-Fi, AC, TV, Breakfast" },
+          { type: "Suite", price: "$250", amenities: "Wi-Fi, AC, TV, Breakfast, Pool access" }
+        ],
+        location: "Goa, India",
+        contact: "+91 98765 43210"
+      },
+      "Hotel B": {
+        name: "Hotel B",
+        image: "hotel2.jpg",
+        description: "Budget-friendly hotel close to downtown.",
+        rooms: [
+          { type: "Single Room", price: "$70", amenities: "Wi-Fi, Fan, TV" },
+          { type: "Double Room", price: "$120", amenities: "Wi-Fi, AC, TV" }
+        ],
+        location: "Delhi, India",
+        contact: "+91 91234 56789"
+      },
+      "Hotel C": {
+        name: "Hotel C",
+        image: "hotel3.jpg",
+        description: "Cozy mountain resort with hiking trails nearby.",
+        rooms: [
+          { type: "Cabin", price: "$90", amenities: "Wi-Fi, Fireplace, Mountain View" },
+          { type: "Deluxe Cabin", price: "$130", amenities: "Wi-Fi, Fireplace, Hot Tub" }
+        ],
+        location: "Manali, India",
+        contact: "+91 99887 11223"
+      },
+      "Hotel D": {
+        name: "Hotel D",
+        image: "hotel4.jpg",
+        description: "Modern business hotel with conference facilities.",
+        rooms: [
+          { type: "Standard Room", price: "$110", amenities: "Wi-Fi, AC, Desk" },
+          { type: "Executive Room", price: "$160", amenities: "Wi-Fi, AC, TV, Meeting Room Access" }
+        ],
+        location: "Bangalore, India",
+        contact: "+91 90909 56565"
+      }
+    };
+  
+    function showInfo(hotelName) {
+      localStorage.setItem("hotelData", JSON.stringify(hotels[hotelName]));
+      window.location.href = "info.html";
+    }
+  </script>
+  
+  
+</body>
+</html>
+

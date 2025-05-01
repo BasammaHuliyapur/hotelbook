@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Submission</title>
+
+</head>
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #d4e9e6;
+        padding: 40px;
+        text-align: center;
+        color: #33691e;
+      }
+      
+      h2 {
+        color: #827717;
+        font-size: 2em;
+        margin-bottom: 20px;
+      }
+      
+      #output {
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        max-width: 500px;
+        margin: auto;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        font-size: 1rem;
+        text-align: left;
+      }
+      
+</style>
+<body>
+  <h2>Booking Confirmed!</h2>
+  <div id="output"></div>
+
+  <script>
+    const data = JSON.parse(localStorage.getItem("bookingInfo"));
+    const hotel = localStorage.getItem("selectedHotel");
+
+    document.getElementById("output").innerHTML = `
+      <p><strong>Hotel:</strong> ${hotel}</p>
+      <p><strong>Name:</strong> ${data.name}</p>
+      <p><strong>Email:</strong> ${data.email}</p>
+      <p><strong>Check-in:</strong> ${data.checkin}</p>
+      <p><strong>Check-out:</strong> ${data.checkout}</p>
+      <p><strong>Adults:</strong> ${data.adults}</p>
+      <p><strong>Children:</strong> ${data.children}</p>
+    `;
+  </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Booking Form</title>
+
+</head>
+<style>
+    body {
+        font-family: 'Roboto', sans-serif;
+        background: #e0f7fa;
+        padding: 40px;
+        color: #004d40;
+        text-align: center;
+      }
+      
+      h2 {
+        margin-bottom: 20px;
+        color: #00796b;
+      }
+      
+      form {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        max-width: 400px;
+        margin: auto;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+      
+      input {
+        width: 100%;
+        padding: 10px;
+        margin: 12px 0;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+      }
+      
+      button {
+        background-color: #d4e9e6;
+        color: white;
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1rem;
+        width: 100%;
+        cursor: pointer;
+      }
+      
+      button:hover {
+        background-color: #004d40;
+      }
+      
+</style>
+<body>
+  <h2>Book Your Stay</h2>
+  <form id="bookingForm">
+    <input type="text" id="name" placeholder="Name" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="date" id="checkin" required>
+    <input type="date" id="checkout" required>
+    <input type="number" id="adults" placeholder="Adults" required>
+    <input type="number" id="children" placeholder="Children" required>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById("bookingForm").onsubmit = function(e) {
+      e.preventDefault();
+      const bookingData = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        checkin: document.getElementById("checkin").value,
+        checkout: document.getElementById("checkout").value,
+        adults: document.getElementById("adults").value,
+        children: document.getElementById("children").value
+      };
+      localStorage.setItem("bookingInfo", JSON.stringify(bookingData));
+      window.location.href = "submit.html";
+    };
+  </script>
+</body>
+</html>
+

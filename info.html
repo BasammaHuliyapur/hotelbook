@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hotel Info</title>
+
+</head>
+<style>
+    .hotel-info {
+        max-width: 600px;
+        margin: auto;
+       
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      }
+      
+      #hotelImage {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 15px;
+      }
+      
+      .room {
+        background: #f8f8f8;
+        padding: 10px;
+        margin: 10px 0;
+        border-left: 4px solid #d63384;
+        border-radius: 8px;
+      }
+      
+</style>
+<body>
+    <div class="hotel-info">
+      <h2 id="hotelName"></h2>
+      <img id="hotelImage" src="" alt="Hotel Image">
+      <p id="hotelDescription"></p>
+      <h3>Room Types & Prices</h3>
+      <div id="roomList"></div>
+      <p><strong>📍 Location:</strong> <span id="location"></span></p>
+      <p><strong>📞 Contact:</strong> <span id="contact"></span></p>
+      <button onclick="bookNow()">Book Now</button>
+    </div>
+  
+    <script>
+      const hotel = JSON.parse(localStorage.getItem("hotelData"));
+      document.getElementById("hotelName").innerText = hotel.name;
+      document.getElementById("hotelImage").src = hotel.image;
+      document.getElementById("hotelDescription").innerText = hotel.description;
+      document.getElementById("location").innerText = hotel.location;
+      document.getElementById("contact").innerText = hotel.contact;
+  
+      const roomDiv = document.getElementById("roomList");
+      hotel.rooms.forEach(room => {
+        const div = document.createElement("div");
+        div.innerHTML = `<p><strong>${room.type}</strong> – ${room.price}<br><em>${room.amenities}</em></p>`;
+        div.classList.add("room");
+        roomDiv.appendChild(div);
+      });
+  
+      function bookNow() {
+        window.location.href = "form.html";
+      }
+    </script>
+  </body>
+  
